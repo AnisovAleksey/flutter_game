@@ -5,5 +5,5 @@ class CustomChannels {
 
     static Future<void> dismissCurrent() async {
        await _navigation.invokeMethod("dismissCurrent");
-     }
+    }
 }

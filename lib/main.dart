@@ -1,8 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:flutter_game/custom_channels.dart';
+import 'package:flutter_game/video_view.dart';
+import 'package:flutter_game/youtube_video_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,12 +43,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -60,14 +57,25 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
         ),
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          child: LayoutBuilder(builder: _buildChessBoard)),
+      body: Column(
+        children: [
+          SizedBox(
+            child: MyVideoView(),
+            height: 142,
+            width: 100,
+          ),
+          LayoutBuilder(builder: _buildChessBoard),
+          SizedBox(
+            child: YoutubeVideoView(
+              videoId: "SmTCmDMi4BY",
+            ),
+            width: 252,
+            height: 142,
+          ),
+        ],
+      ),
     );
   }
 
