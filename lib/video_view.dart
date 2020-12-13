@@ -18,7 +18,12 @@ class MyVideoView extends StatelessWidget {
         creationParamsCodec: const StandardMessageCodec(),
       );
     } else if (Platform.isAndroid) {
-      return AndroidView(viewType: _androidViewType);
+      return AndroidView(
+        viewType: _androidViewType,
+        layoutDirection: TextDirection.ltr,
+        creationParams: creationParams,
+        creationParamsCodec: const StandardMessageCodec(),
+      );
     } else {
       return Container();
     }

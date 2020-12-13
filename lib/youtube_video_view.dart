@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
@@ -24,7 +27,35 @@ class YoutubeVideoView extends StatelessWidget {
         creationParamsCodec: const StandardMessageCodec(),
       );
     } else if (Platform.isAndroid) {
-      return AndroidView(viewType: _androidViewType);
+      return AndroidView(
+        viewType: _androidViewType,
+        layoutDirection: TextDirection.ltr,
+        creationParams: creationParams,
+        creationParamsCodec: const StandardMessageCodec(),
+      );
+
+      // return PlatformViewLink(
+      //   viewType: _androidViewType,
+      //   surfaceFactory:
+      //       (BuildContext context, PlatformViewController controller) {
+      //     return AndroidViewSurface(
+      //       controller: controller,
+      //       gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+      //       hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+      //     );
+      //   },
+      //   onCreatePlatformView: (PlatformViewCreationParams params) {
+      //     return PlatformViewsService.initSurfaceAndroidView(
+      //       id: params.id,
+      //       viewType: _androidViewType,
+      //       layoutDirection: TextDirection.ltr,
+      //       creationParams: creationParams,
+      //       creationParamsCodec: StandardMessageCodec(),
+      //     )
+      //       ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+      //       ..create();
+      //   },
+      // );
     } else {
       return Container();
     }
