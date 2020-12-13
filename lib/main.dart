@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
-import 'package:flutter_game/custom_channels.dart';
+import 'package:flutter_game/channels.dart';
 import 'package:flutter_game/youtube_video_view.dart';
 
 void main() => runApp(MyApp());
