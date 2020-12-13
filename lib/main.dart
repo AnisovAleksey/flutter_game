@@ -1,10 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:flutter_game/custom_channels.dart';
-import 'package:flutter_game/video_view.dart';
 import 'package:flutter_game/youtube_video_view.dart';
 
 void main() => runApp(MyApp());
@@ -61,19 +59,29 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          SizedBox(
-            child: MyVideoView(),
-            height: 142,
-            width: 100,
+          Expanded(
+            flex: 1,
+            child: SizedBox.expand(
+              child: AspectRatio(
+                aspectRatio: 16.0 / 9.0,
+                child: YoutubeVideoView(
+                  videoId: "wgTBLj7rMPM",
+                ),
+              ),
+            ),
           ),
           LayoutBuilder(builder: _buildChessBoard),
-          SizedBox(
-            child: YoutubeVideoView(
-              videoId: "SmTCmDMi4BY",
+          Expanded(
+            flex: 1,
+            child: SizedBox.expand(
+              child: AspectRatio(
+                aspectRatio: 16.0 / 9.0,
+                child: YoutubeVideoView(
+                  videoId: "SmTCmDMi4BY",
+                ),
+              ),
             ),
-            width: 252,
-            height: 142,
-          ),
+          )
         ],
       ),
     );
