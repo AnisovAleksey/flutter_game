@@ -20,6 +20,7 @@ class YoutubeVideoView extends StatelessWidget {
       "videoId": videoId
     };
     if (Platform.isIOS) {
+      // on iOS only Hybrid Composition
       return UiKitView(
         viewType: _iosViewType,
         layoutDirection: TextDirection.ltr,
@@ -27,6 +28,7 @@ class YoutubeVideoView extends StatelessWidget {
         creationParamsCodec: const StandardMessageCodec(),
       );
     } else if (Platform.isAndroid) {
+      // Virtual Display
       return AndroidView(
         viewType: _androidViewType,
         layoutDirection: TextDirection.ltr,
@@ -34,6 +36,7 @@ class YoutubeVideoView extends StatelessWidget {
         creationParamsCodec: const StandardMessageCodec(),
       );
 
+      // TODO: Hybrid Composition
       // return PlatformViewLink(
       //   viewType: _androidViewType,
       //   surfaceFactory:
